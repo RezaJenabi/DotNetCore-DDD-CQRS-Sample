@@ -117,10 +117,10 @@ namespace Utilities.Extensions.ModelBuilder
         /// <param name="modelBuilder"></param>
         /// <param name="baseType">Base type that Entities inherit from this</param>
         /// <param name="assemblies">Assemblies contains Entities</param>
-        public static void RegisterAllEntities<BaseType>(this Microsoft.EntityFrameworkCore.ModelBuilder modelBuilder, params Assembly[] assemblies)
+        public static void RegisterAllEntities<T>(this Microsoft.EntityFrameworkCore.ModelBuilder modelBuilder, params Assembly[] assemblies)
         {
             var types = assemblies.SelectMany(a => a.GetExportedTypes())
-                .Where(c => c.IsClass && !c.IsAbstract && c.IsPublic && typeof(BaseType).IsAssignableFrom(c));
+                .Where(c => c.IsClass && !c.IsAbstract && c.IsPublic && typeof(T).IsAssignableFrom(c));
 
             foreach (var type in types)
                 modelBuilder.Entity(type);

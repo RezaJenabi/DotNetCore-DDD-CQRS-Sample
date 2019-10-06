@@ -1,20 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Domain.Models.Order;
+using Core.BaseEntities;
+using Domain.Models.Orders;
 
-namespace Domain.Models.Customer
+namespace Domain.Models.Customers
 {
-    public class Customer
+    public class Customer : BaseEntity , ITrackable, ISoftDelete, IAggregateRoot
     {
-        private readonly List<Cart> _purchases = new List<Cart>();
-
-
-        public Guid Id { get; protected set; }
+        private readonly List<Order> _orders = new List<Order>();
         public string FirstName { get; protected set; }
         public string LastName { get; protected set; }
         public string Email { get; protected set; }
-        public ReadOnlyCollection<Cart> Purchases => this._purchases.AsReadOnly();
+        public ReadOnlyCollection<Order> Orders => this._orders.AsReadOnly();
 
         //public Purchase Checkout(Cart cart)
         //{
@@ -34,5 +32,13 @@ namespace Domain.Models.Customer
             };
             return customer;
         }
+
+        public DateTime CreatedAt { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime LastUpdatedAt { get; set; }
+        public string LastUpdatedBy { get; set; }
+        public bool Deleted { get; set; }
+        public DateTime DeletedAt { get; set; }
+        public string DeletedBy { get; set; }
     }
 }
