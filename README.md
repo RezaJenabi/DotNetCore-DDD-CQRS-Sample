@@ -1,4 +1,4 @@
-# DDD & CQRS & .net Core 2.2 Sample
+# DDD & CQRS & .net Core Sample
 
 
 # Building
