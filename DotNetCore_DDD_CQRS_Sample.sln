@@ -3,27 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{AAFF2DB1-6F1C-4584-A34A-8A3237429FE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{AAFF2DB1-6F1C-4584-A34A-8A3237429FE8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{FD32F3DD-3D48-43F4-A242-F1F8E50FB85E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{73328D80-7840-40D0-AC83-ED574A2C1013}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{73328D80-7840-40D0-AC83-ED574A2C1013}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities.csproj", "{918DED3B-5731-46D9-AAFC-C565600BFFE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities", "Utilities\Utilities.csproj", "{918DED3B-5731-46D9-AAFC-C565600BFFE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands", "Commands\Commands.csproj", "{73DE7EA0-5052-44D9-BC89-17B693A68F02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands", "Commands\Commands.csproj", "{73DE7EA0-5052-44D9-BC89-17B693A68F02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandsHandler", "CommandsHandler\CommandsHandler.csproj", "{2BEF81EF-9769-4E54-8FF7-C2B424D369DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandsHandler", "CommandsHandler\CommandsHandler.csproj", "{2BEF81EF-9769-4E54-8FF7-C2B424D369DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{3FCEA092-FA11-4429-9C10-90A32FD949C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{3FCEA092-FA11-4429-9C10-90A32FD949C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Queries", "Queries\Queries.csproj", "{F2FAE455-42A6-43A7-A3FA-0FBE2F626A19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Queries", "Queries\Queries.csproj", "{F2FAE455-42A6-43A7-A3FA-0FBE2F626A19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueriesHandler", "QueriesHandler\QueriesHandler.csproj", "{E773C88D-E0EA-4703-AA05-EE8659C54A11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueriesHandler", "QueriesHandler\QueriesHandler.csproj", "{E773C88D-E0EA-4703-AA05-EE8659C54A11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{61E37C84-1B67-4C9B-8509-850AEBA7AD75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{61E37C84-1B67-4C9B-8509-850AEBA7AD75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{E649E830-4412-4F39-A19B-19BDA02D5151}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{E649E830-4412-4F39-A19B-19BDA02D5151}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework2", "Framework2", "{7C8C401B-547E-476F-AF7B-51B59D0C1C65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{80FC8DA0-C696-45B5-84A0-58CE3D77B4DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +75,10 @@ Global
 		{E649E830-4412-4F39-A19B-19BDA02D5151}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E649E830-4412-4F39-A19B-19BDA02D5151}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E649E830-4412-4F39-A19B-19BDA02D5151}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80FC8DA0-C696-45B5-84A0-58CE3D77B4DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80FC8DA0-C696-45B5-84A0-58CE3D77B4DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80FC8DA0-C696-45B5-84A0-58CE3D77B4DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80FC8DA0-C696-45B5-84A0-58CE3D77B4DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,6 +86,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{73328D80-7840-40D0-AC83-ED574A2C1013} = {FD32F3DD-3D48-43F4-A242-F1F8E50FB85E}
 		{918DED3B-5731-46D9-AAFC-C565600BFFE2} = {FD32F3DD-3D48-43F4-A242-F1F8E50FB85E}
+		{80FC8DA0-C696-45B5-84A0-58CE3D77B4DE} = {7C8C401B-547E-476F-AF7B-51B59D0C1C65}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {11D55A78-B26C-42C2-8A54-1166BF16E027}
