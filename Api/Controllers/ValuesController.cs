@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Commands.Customer;
+using CommandsHandler.Customer;
+using Core.Common;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Api.Controllers
 {
@@ -10,7 +14,6 @@ namespace Api.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {

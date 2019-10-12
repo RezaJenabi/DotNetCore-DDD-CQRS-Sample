@@ -1,33 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Core.BaseEntities;
-using Domain.Models.Orders;
-using Domain.Models.Payments;
+using Core.Domain.BaseEntities;
+using Domain.Models.Carts;
+using Domain.Models.Purchases;
 
 namespace Domain.Models.Customers
 {
     public class Customer : BaseEntity , ITrackable, ISoftDelete, IAggregateRoot
     {
-        private readonly List<Order> _orders = new List<Order>();
+        private readonly List<Purchase> _purchases = new List<Purchase>();
         public string FirstName { get; protected set; }
         public string LastName { get; protected set; }
         public string Email { get; protected set; }
-        public ReadOnlyCollection<Order> Orders => this._orders.AsReadOnly();
-        public void Checkout(Order order, Payment payment)
-        {
-            var orderItem = new Order(this, payment);
-            _orders.Add(orderItem);
-        }
-
-        //public Purchase Checkout(Order order) 
-        //{
-        //    Purchase purchase = Purchase.Create(this, cart.Products);
-        //    this.purchases.Add(purchase);
-        //    DomainEvents.Raise(new CustomerCheckedOut() { Purchase = purchase });
-        //    return purchase;
-        //}
-
+        public ReadOnlyCollection<Purchase> Orders => this._purchases.AsReadOnly();
         public DateTime CreatedAt { get; set; }
         public string CreatedBy { get; set; }
         public DateTime LastUpdatedAt { get; set; }
@@ -35,6 +21,13 @@ namespace Domain.Models.Customers
         public bool Deleted { get; set; }
         public DateTime DeletedAt { get; set; }
         public string DeletedBy { get; set; }
+
+        public Purchase Checkout(Cart cart)
+        {
+            var purchase = Purchase.Create(this, cart);
+            this._purchases.Add(purchase);
+            return purchase;
+        }
 
         public static Customer Create(string firstname, string lastname, string email)
         {
@@ -51,8 +44,6 @@ namespace Domain.Models.Customers
 
             if (string.IsNullOrEmpty(email))
                 throw new ArgumentNullException(nameof(email));
-
-
 
             var customer = new Customer()
             {

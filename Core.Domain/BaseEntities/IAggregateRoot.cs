@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Core.BaseEntities
+﻿namespace Core.Domain.BaseEntities
 {
     public interface IAggregateRoot
     {

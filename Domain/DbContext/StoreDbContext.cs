@@ -2,11 +2,11 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Core.BaseEntities;
+using Core.Domain.BaseEntities;
+using Core.Utilities.Extensions.ModelBuilder;
 using Domain.Models.Customers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Utilities.Extensions.ModelBuilder;
 
 namespace Domain.DbContext
 {
