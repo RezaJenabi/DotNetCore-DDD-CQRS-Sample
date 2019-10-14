@@ -1,6 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using Core.Common;
+using System.Threading.Tasks;
 
-namespace Core.Common
+namespace Core.Commands
 {
     public abstract class MessageHandler<T, TOut>
         where T : class, IRequest<TOut>

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Commands.Customer;
-using CommandsHandler.Customer;
+﻿using System.Threading.Tasks;
+using Commands.Customers;
+using CommandsHandler.Customers;
 using Core.Common;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace Api.Controllers
 {
@@ -21,9 +17,8 @@ namespace Api.Controllers
             this._createCustomerHandler = sendMessageHandler;
         }
 
-        // POST api/values
         [HttpPost]
-        public Task<CreateCustomerResult> Post(CreateCustomer createCustomer)
-            => _createCustomerHandler.Handler(createCustomer);
+        public Task<Result> Post(CreateCustomer createCustomer)
+        => _createCustomerHandler.Handler(createCustomer);
     }
 }

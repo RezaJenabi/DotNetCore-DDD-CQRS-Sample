@@ -1,17 +1,13 @@
 ﻿using Core.Common;
 using FluentValidation;
 
-namespace Commands.Customer
+namespace Commands.Customers
 {
-    public class CreateCustomer : Request<CreateCustomerResult>
+    public class CreateCustomer : Request<Result>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-    }
-    public class CreateCustomerResult : Result
-    {
-        public int Id { get; set; }
     }
     public class CreateCustomerValidator : AbstractValidator<CreateCustomer>
     {

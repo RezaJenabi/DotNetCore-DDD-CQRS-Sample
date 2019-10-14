@@ -4,4 +4,13 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Mapster" Version="4.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core.Queries\Core.Queries.csproj" />
+    <ProjectReference Include="..\Queries\Queries.csproj" />
+  </ItemGroup>
+
 </Project>
