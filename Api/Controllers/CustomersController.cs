@@ -19,6 +19,13 @@ namespace Api.Controllers
 
         [HttpPost]
         public Task<Result> Post(CreateCustomer createCustomer)
-        => _createCustomerHandler.Handler(createCustomer);
+        {
+            if (!ModelState.IsValid)
+            {
+
+            }
+           return  _createCustomerHandler.Handler(createCustomer);
+        }
+
     }
 }

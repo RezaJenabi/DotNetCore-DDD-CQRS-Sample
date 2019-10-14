@@ -8,7 +8,7 @@ namespace Api.Extensions
     {
         public static void AddValidators(this IServiceCollection services)
         {
-            services.AddSingleton<IValidator<CreateCustomer>, CreateCustomerValidator>();
+            services.AddTransient<IValidator<CreateCustomer>, CreateCustomerValidator>();
         }
     }
 }

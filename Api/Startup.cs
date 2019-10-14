@@ -3,6 +3,7 @@ using CommandsHandler.Customers;
 using Core.Domain.IRepository;
 using Core.Repository;
 using Domain.DbContext;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +28,7 @@ namespace Api
             services.AddSqlContext(Configuration);
             services.AddCommandsQueries();
             services.AddRepositories();
+            services.AddValidators();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
