@@ -1,7 +1,9 @@
 ﻿using Api.Extensions;
+using Commands.Customers;
 using CommandsHandler.Customers;
 using Core.Domain.IRepository;
 using Core.Repository;
+using Core.Utilities.ActionFilter;
 using Domain.DbContext;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
@@ -28,8 +30,11 @@ namespace Api
             services.AddSqlContext(Configuration);
             services.AddCommandsQueries();
             services.AddRepositories();
-            services.AddValidators();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(opt =>
+            {
+                opt.Filters.Add(typeof(ValidatorActionFilter));
+            }).AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<CreateCustomer>())
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
