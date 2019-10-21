@@ -4,6 +4,7 @@ using CommandsHandler.Customers;
 using Core.Domain.IRepository;
 using Core.Repository;
 using Core.Utilities.ActionFilter;
+using Core.Utilities.ResponseWrapper;
 using Domain.DbContext;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
@@ -44,7 +45,7 @@ namespace Api
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseAPIResponseWrapperMiddleware();
             app.UseMvc();
         }
     }
