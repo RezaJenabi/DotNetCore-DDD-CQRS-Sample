@@ -1,21 +1,34 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using Core.Utilities.ResponseWrapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Core.Utilities.ActionFilter
 {
-    public class ValidatorActionFilter : IActionFilter
+    public class ValidatorActionFilter : ActionFilterAttribute
     {
-        public void OnActionExecuting(ActionExecutingContext filterContext)
+        public override void OnActionExecuting(ActionExecutingContext context)
         {
-            if (!filterContext.ModelState.IsValid)
+            if (!context.ModelState.IsValid)
             {
-                filterContext.Result = new BadRequestObjectResult(filterContext.ModelState);
+                var errors = context.ModelState.Values.Where(v => v.Errors.Count > 0)
+                    .SelectMany(v => v.Errors)
+                    .Select(v => v.ErrorMessage)
+                    .ToList();
+
+                var responseObj = new
+                {
+                    Message = "Bad Request",
+                    Errors = errors
+                };
+                //TODO:I cant come back result by APIResponse
+                context.Result = new JsonResult(responseObj)
+                {
+                    StatusCode = 400
+                }; ;
             }
-        }
-
-        public void OnActionExecuted(ActionExecutedContext filterContext)
-        {
-
         }
     }
 }

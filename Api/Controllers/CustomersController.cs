@@ -14,7 +14,7 @@ namespace Api.Controllers
 
         public CustomersController(ICreateCustomerHandler sendMessageHandler)
         {
-            this._createCustomerHandler = sendMessageHandler;
+            _createCustomerHandler = sendMessageHandler;
         }
 
         [HttpPost]
@@ -24,7 +24,7 @@ namespace Api.Controllers
             {
 
             }
-           return  _createCustomerHandler.Handler(createCustomer);
+            return  _createCustomerHandler.Handler(createCustomer);
         }
 
     }

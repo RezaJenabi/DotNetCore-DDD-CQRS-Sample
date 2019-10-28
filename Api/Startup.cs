@@ -31,11 +31,15 @@ namespace Api
             services.AddSqlContext(Configuration);
             services.AddCommandsQueries();
             services.AddRepositories();
-            services.AddMvc(opt =>
-            {
-                opt.Filters.Add(typeof(ValidatorActionFilter));
-            }).AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<CreateCustomer>())
+            services.AddMvc(options =>
+                {
+                    options.Filters.Add(typeof(ValidatorActionFilter));
+                }).AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<CreateCustomer>())
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -15,7 +15,7 @@ namespace Commands.Customers
         {
             RuleFor(x => x.FirstName).NotNull().WithMessage(Resource.Validaton.FirstNameRequired);
             RuleFor(x => x.LastName).NotNull().WithMessage(Resource.Validaton.LastNameRequired);
-            RuleFor(x => x.Email).Matches(@"\A(?:[a-z0-9!#$%&'*=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z").WithMessage(Resource.Validaton.EmailFormat);
+            //RuleFor(x => x.Email).Matches(@"\A(?:[a-z0-9!#$%&'*=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z").WithMessage(Resource.Validaton.EmailFormat);
 
         }
     }

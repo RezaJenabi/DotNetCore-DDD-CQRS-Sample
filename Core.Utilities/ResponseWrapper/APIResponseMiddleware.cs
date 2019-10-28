@@ -150,16 +150,8 @@ namespace Core.Utilities.ResponseWrapper
 
             if (type.Equals(typeof(Newtonsoft.Json.Linq.JObject)))
             {
-                apiResponse = JsonConvert.DeserializeObject<APIResponse>(bodyText);
-                if (apiResponse.StatusCode != code)
-                    jsonString = JsonConvert.SerializeObject(apiResponse);
-                else if (apiResponse.Result != null)
-                    jsonString = JsonConvert.SerializeObject(apiResponse);
-                else
-                {
-                    apiResponse = new APIResponse(code, ResponseMessageEnum.Success.AsString(EnumFormat.Description), bodyContent, null);
-                    jsonString = JsonConvert.SerializeObject(apiResponse);
-                }
+                apiResponse = new APIResponse(code, ResponseMessageEnum.Success.AsString(EnumFormat.Description), bodyContent, null);
+                jsonString = JsonConvert.SerializeObject(apiResponse);
             }
             else
             {
@@ -182,7 +174,6 @@ namespace Core.Utilities.ResponseWrapper
         private bool IsSwagger(HttpContext context)
         {
             return context.Request.Path.StartsWithSegments("/swagger");
-
         }
     }
 }

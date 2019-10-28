@@ -20,7 +20,7 @@ namespace CommandsHandler.Customers
         {
             var customer = message.Adapt<Customer>();
             await _customerRepository.AddAsync(customer);
-            return new Result();
+            return new Result{Text = "OK"};
         }
     }
 
