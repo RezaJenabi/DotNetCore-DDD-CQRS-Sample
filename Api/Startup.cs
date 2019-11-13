@@ -1,16 +1,9 @@
 ﻿using Api.Extensions;
 using Commands.Customers;
-using CommandsHandler.Customers;
-using Core.Domain.IRepository;
-using Core.Repository;
-using Core.Utilities.ActionFilter;
-using Core.Utilities.ResponseWrapper;
-using Domain.DbContext;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -31,10 +24,7 @@ namespace Api
             services.AddSqlContext(Configuration);
             services.AddCommandsQueries();
             services.AddRepositories();
-            services.AddMvc(options =>
-                {
-                    options.Filters.Add(typeof(ValidatorActionFilter));
-                }).AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<CreateCustomer>())
+            services.AddMvc().AddFluentValidation(fvc => fvc.RegisterValidatorsFromAssemblyContaining<CreateCustomer>())
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.Configure<ApiBehaviorOptions>(options =>
             {
@@ -49,7 +39,6 @@ namespace Api
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseAPIResponseWrapperMiddleware();
             app.UseMvc();
         }
     }
