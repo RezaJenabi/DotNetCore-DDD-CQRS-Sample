@@ -2,39 +2,26 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Core.Domain.BaseEntities;
-using Domain.Models.Carts;
-using Domain.Models.Purchases;
+using Domain.Models.Customers.Addresses;
+using Mapster;
 
-namespace Domain.Models.Customers
+namespace Domain.Models.Customers.Customer
 {
-    public class Customer : BaseEntity , ITrackable, ISoftDelete, IAggregateRoot
+
+    public class CreateCustomer : ITrackable
     {
-        private readonly List<Purchase> _purchases = new List<Purchase>();
+        //private readonly List<Address> _addresses = new List<Address>();
+        public Guid Id { get; set; }
         public string FirstName { get; protected set; }
         public string LastName { get; protected set; }
         public string Email { get; protected set; }
-        public ReadOnlyCollection<Purchase> Orders => this._purchases.AsReadOnly();
+        //public ReadOnlyCollection<Address> Addresses => this._addresses.AsReadOnly();
         public DateTime CreatedAt { get; set; }
         public string CreatedBy { get; set; }
         public DateTime LastUpdatedAt { get; set; }
         public string LastUpdatedBy { get; set; }
-        public bool Deleted { get; set; }
-        public DateTime DeletedAt { get; set; }
-        public string DeletedBy { get; set; }
-
-        public Purchase Checkout(Cart cart)
-        {
-            var purchase = Purchase.Create(this, cart);
-            this._purchases.Add(purchase);
-            return purchase;
-        }
 
         public static Customer Create(string firstname, string lastname, string email)
-        {
-            return Create(Guid.NewGuid(), firstname, lastname, email);
-        }
-
-        public static Customer Create(Guid id, string firstname, string lastname, string email)
         {
             if (string.IsNullOrEmpty(firstname))
                 throw new ArgumentNullException(nameof(firstname));
@@ -45,14 +32,14 @@ namespace Domain.Models.Customers
             if (string.IsNullOrEmpty(email))
                 throw new ArgumentNullException(nameof(email));
 
-            var customer = new Customer()
+            var createCustomer = new CreateCustomer()
             {
-                Id = id,
+                Id=Guid.NewGuid(),
                 FirstName = firstname,
                 LastName = lastname,
                 Email = email
             };
-
+            var customer = createCustomer.Adapt<Customer>();
             return customer;
         }
     }

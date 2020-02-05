@@ -1,10 +1,10 @@
-﻿using System.Threading.Tasks;
-using Commands.Customers;
+﻿using System;
+using System.Threading.Tasks;
 using Core.Commands;
 using Core.Common;
 using Core.Domain.IRepository;
-using Domain.Models.Customers;
-using Mapster;
+using Domain.Models.Customers.Customer;
+using CreateCustomer = Commands.Customers.CreateCustomer;
 
 namespace CommandsHandler.Customers
 {
@@ -18,8 +18,17 @@ namespace CommandsHandler.Customers
 
         public override async Task<Result> Handler(CreateCustomer message)
         {
-            var customer = message.Adapt<Customer>();
-            await _customerRepository.AddAsync(customer);
+            var customer = Domain.Models.Customers.Customer.CreateCustomer.Create(message.FirstName, message.LastName, message.Email);
+            try
+            {
+                _customerRepository.Add(customer);
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
             return new Result{Text = "OK"};
         }
     }

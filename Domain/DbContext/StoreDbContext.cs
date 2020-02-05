@@ -3,8 +3,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Core.Domain.BaseEntities;
-using Core.Utilities.Extensions.ModelBuilder;
 using Domain.Models.Customers;
+using Domain.Models.Customers.Addresses;
+using Domain.Models.Customers.Customer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
@@ -14,19 +15,10 @@ namespace Domain.DbContext
     {
         public StoreDbContext(DbContextOptions options) : base(options)
         {
+            
         }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            var domainAssembly = typeof(Customer).Assembly;
-            modelBuilder.RegisterAllEntities<IEntity>(domainAssembly);
-            modelBuilder.RegisterEntityTypeConfiguration(domainAssembly);
-            modelBuilder.AddRestrictDeleteBehaviorConvention();
-            modelBuilder.AddPluralizingTableNameConvention();
-            modelBuilder.AddSequentialGuidForIdConvention();
-            base.OnModelCreating(modelBuilder);
-        }
-
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Address> Address { get; set; }
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
         {
             OnBeforeSaving();

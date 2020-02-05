@@ -22,7 +22,6 @@ namespace Api.Controllers
         {
             if (!ModelState.IsValid)
             {
-
             }
             return  _createCustomerHandler.Handler(createCustomer);
         }

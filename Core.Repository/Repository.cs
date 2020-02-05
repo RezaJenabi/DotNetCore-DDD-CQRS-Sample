@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Core.Domain.IRepository;
 using Core.Utilities.Helper;
 using Domain.DbContext;
+using Microsoft.Data.SqlClient;
 
 namespace Core.Repository
 {
