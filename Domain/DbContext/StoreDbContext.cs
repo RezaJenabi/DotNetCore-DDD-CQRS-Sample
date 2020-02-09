@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Core.Domain.BaseEntities;
 using Domain.Models.Customers;
 using Domain.Models.Customers.Addresses;
-using Domain.Models.Customers.Customer;
+using Domain.Models.Customers.Customers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 

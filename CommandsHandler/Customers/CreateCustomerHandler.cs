@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Commands.Customers;
 using Core.Commands;
 using Core.Common;
 using Core.Domain.IRepository;
-using Domain.Models.Customers.Customer;
-using CreateCustomer = Commands.Customers.CreateCustomer;
+using Domain.Models.Customers.Customers;
+using Mapster;
 
 namespace CommandsHandler.Customers
 {
@@ -18,9 +19,10 @@ namespace CommandsHandler.Customers
 
         public override async Task<Result> Handler(CreateCustomer message)
         {
-            var customer = Domain.Models.Customers.Customer.CreateCustomer.Create(message.FirstName, message.LastName, message.Email);
             try
             {
+                var customerCreated = message.Adapt<CustomerCreated>();
+                var customer = CustomerCreated.Create(customerCreated);
                 _customerRepository.Add(customer);
 
             }
@@ -29,13 +31,13 @@ namespace CommandsHandler.Customers
                 Console.WriteLine(e);
                 throw;
             }
-            return new Result{Text = "OK"};
+            return new Result { Text = "OK" };
         }
     }
 
     public interface ICreateCustomerHandler
-   {
-       Task<Result> Handler(CreateCustomer message);
-   }
+    {
+        Task<Result> Handler(CreateCustomer message);
+    }
 
 }

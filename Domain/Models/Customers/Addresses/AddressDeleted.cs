@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Domain.Models.Customers.Addresses.DeleteAddress
+namespace Domain.Models.Customers.Addresses
 {
-    public class Address 
+    public class AddressDeleted
     {
         public Guid Id { get; set; }
     }
