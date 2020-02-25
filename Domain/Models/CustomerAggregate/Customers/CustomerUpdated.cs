@@ -4,7 +4,7 @@ using Core.Domain.BaseEntities;
 namespace Domain.Models.Customers.Customers
 {
 
-    public class CustomerUpdated : ITrackable
+    public class CustomerUpdated 
     {
         //private readonly List<Address> _addresses = new List<Address>();
         public string FirstName { get; protected set; }

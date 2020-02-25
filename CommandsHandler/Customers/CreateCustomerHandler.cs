@@ -4,6 +4,7 @@ using Commands.Customers;
 using Core.Commands;
 using Core.Common;
 using Core.Domain.IRepository;
+using Domain.Models.CustomerAggregate.Customers;
 using Domain.Models.Customers.Customers;
 using Mapster;
 

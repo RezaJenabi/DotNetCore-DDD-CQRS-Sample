@@ -5,8 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="IRepository\" />
-    <Folder Include="Migrations\" />
+    <Compile Remove="IRepository\**" />
+    <EmbeddedResource Remove="IRepository\**" />
+    <None Remove="IRepository\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Events\" />
+    <Folder Include="SeedWork\" />
     <Folder Include="Resource\" />
   </ItemGroup>
 
