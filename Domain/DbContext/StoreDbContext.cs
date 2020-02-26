@@ -1,5 +1,5 @@
 ﻿using Domain.Configuration;
-using Domain.Models.CustomerAggregate.Customers;
+using Domain.Models.CustomerAggregate;
 using Microsoft.EntityFrameworkCore;
 
 namespace Domain.DbContext

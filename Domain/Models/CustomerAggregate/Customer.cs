@@ -1,14 +1,16 @@
 ﻿using Core.Domain.BaseEntities;
+using Domain.Models.CustomerAggregate.Events.DomainEvents;
+using eCommerce.Helpers.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Domain.Models.CustomerAggregate.Customers
+namespace Domain.Models.CustomerAggregate
 {
 
     public class Customer : BaseEntity, IAggregateRoot
     {
-        public string FirstName { get;private  set; }
+        public string FirstName { get; private set; }
         public string LastName { get; private set; }
         public string Email { get; private set; }
         public bool IsActive { get; private set; }
@@ -24,12 +26,14 @@ namespace Domain.Models.CustomerAggregate.Customers
 
         }
 
-        public Customer(string fistName, string lastName, string email,Address address)
+        public Customer(string fistName, string lastName, string email, Address address)
         {
             FirstName = fistName;
             LastName = lastName;
             Email = email;
             Address = address;
+
+            DomainEvents.Raise<CustomerCreateEvent>(new CustomerCreateEvent() { Customer = this });
         }
 
         public void AddCreditCard(string name, string cardNum, DateTime expiry)

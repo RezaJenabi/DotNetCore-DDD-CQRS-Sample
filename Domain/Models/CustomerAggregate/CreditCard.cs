@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Domain.Models.CustomerAggregate.Customers
+namespace Domain.Models.CustomerAggregate
 {
     public class CreditCard
     {
@@ -17,7 +17,7 @@ namespace Domain.Models.CustomerAggregate.Customers
 
         public CreditCard(string name, string cardNum, DateTime expiry)
         {
-           
+
 
             if (string.IsNullOrEmpty(name))
                 throw new Exception("Name can't be empty");
@@ -34,7 +34,7 @@ namespace Domain.Models.CustomerAggregate.Customers
             Active = true;
             Created = DateTime.Today;
 
-          
+
         }
 
         public override bool Equals(object obj)
@@ -43,8 +43,8 @@ namespace Domain.Models.CustomerAggregate.Customers
             if (creditCardToCompare == null)
                 throw new Exception("Can't compare two different objects to each other");
 
-            return this.CardNumber == creditCardToCompare.CardNumber &&
-                this.Expiry == creditCardToCompare.Expiry;
+            return CardNumber == creditCardToCompare.CardNumber &&
+                Expiry == creditCardToCompare.Expiry;
         }
     }
 }

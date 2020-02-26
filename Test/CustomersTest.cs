@@ -6,7 +6,6 @@ using CommandsHandler.Customers;
 using Core.Domain.IRepository;
 using Core.Repository;
 using Domain.DbContext;
-using Domain.Models.Customers;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;

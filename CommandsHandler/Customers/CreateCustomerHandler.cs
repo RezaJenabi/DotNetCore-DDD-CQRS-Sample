@@ -4,8 +4,7 @@ using Commands.Customers;
 using Core.Commands;
 using Core.Common;
 using Core.Domain.IRepository;
-using Domain.Models.CustomerAggregate.Customers;
-using Domain.Models.Customers.Customers;
+using Domain.Models.CustomerAggregate;
 using Mapster;
 
 namespace CommandsHandler.Customers
@@ -22,9 +21,10 @@ namespace CommandsHandler.Customers
         {
             try
             {
-                var customerCreated = message.Adapt<CustomerCreated>();
-                var customer = CustomerCreated.Create(customerCreated);
-                _customerRepository.Add(customer);
+                var iitem = new Customer("","","",null);
+                //var customerCreated = message.Adapt<CustomerCreated>();
+                //var customer = CustomerCreated.Create(customerCreated);
+                _customerRepository.Add(iitem);
 
             }
             catch (Exception e)
