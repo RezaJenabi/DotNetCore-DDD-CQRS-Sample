@@ -13,17 +13,17 @@ namespace Domain.Configuration
             builder.Property(b => b.FirstName).HasMaxLength(50).IsRequired();
             builder.Property(b => b.LastName).HasMaxLength(200).IsRequired();
 
-            builder.OwnsMany(p => p.CreditCards, a =>
-            {
-                a.WithOwner().HasForeignKey("CustomerId");
-                a.Property<Guid>("Id");
-                a.HasKey("Id");
-            });
+            //builder.OwnsMany(p => p.CreditCards, a =>
+            //{
+            //    a.WithOwner().HasForeignKey("CustomerId");
+            //    a.Property<Guid>("Id");
+            //    a.HasKey("Id");
+            //});
 
-            builder.OwnsOne(p => p.Address, od =>
-            {
-                od.ToTable("Address");
-            });
+            //builder.OwnsOne(p => p.Address, od =>
+            //{
+            //    od.ToTable("Address");
+            //});
         }
     }
 }

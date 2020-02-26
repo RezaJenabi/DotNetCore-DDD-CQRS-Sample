@@ -15,11 +15,11 @@ namespace Domain.Models.CustomerAggregate
         public string Email { get; private set; }
         public bool IsActive { get; private set; }
 
-        public Address Address { get; private set; }
+        //public Address Address { get; private set; }
 
-        private readonly List<CreditCard> _creditCards;
+        //private readonly List<CreditCard> _creditCards;
 
-        public IReadOnlyCollection<CreditCard> CreditCards => _creditCards;
+        //public IReadOnlyCollection<CreditCard> CreditCards => _creditCards;
 
         private Customer()
         {
@@ -31,34 +31,34 @@ namespace Domain.Models.CustomerAggregate
             FirstName = fistName;
             LastName = lastName;
             Email = email;
-            Address = address;
+            //Address = address;
+            this.AddDomainEvent(new CustomerCreateEvent(this));
 
-            DomainEvents.Raise<CustomerCreateEvent>(new CustomerCreateEvent() { Customer = this });
         }
 
         public void AddCreditCard(string name, string cardNum, DateTime expiry)
         {
-            var existingOrderForProduct = _creditCards.Where(o => o.CardNumber == cardNum)
-                .SingleOrDefault();
+            //var existingOrderForProduct = _creditCards.Where(o => o.CardNumber == cardNum)
+            //    .SingleOrDefault();
 
-            if (existingOrderForProduct != null)
-            {
-                //if previous line exist modify it with higher discount  and units..
+            //if (existingOrderForProduct != null)
+            //{
+            //    //if previous line exist modify it with higher discount  and units..
 
-                //if (discount > existingOrderForProduct.GetCurrentDiscount())
-                //{
-                //    existingOrderForProduct.SetNewDiscount(discount);
-                //}
+            //    //if (discount > existingOrderForProduct.GetCurrentDiscount())
+            //    //{
+            //    //    existingOrderForProduct.SetNewDiscount(discount);
+            //    //}
 
-                //existingOrderForProduct.AddUnits(units);
-            }
-            else
-            {
-                //add validated new order item
+            //    //existingOrderForProduct.AddUnits(units);
+            //}
+            //else
+            //{
+            //    //add validated new order item
 
-                var creditCard = new CreditCard(name, cardNum, expiry);
-                _creditCards.Add(creditCard);
-            }
+            //    var creditCard = new CreditCard(name, cardNum, expiry);
+            //    _creditCards.Add(creditCard);
+            //}
         }
 
     }

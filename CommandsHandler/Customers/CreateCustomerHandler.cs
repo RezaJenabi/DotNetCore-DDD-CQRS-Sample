@@ -21,10 +21,10 @@ namespace CommandsHandler.Customers
         {
             try
             {
-                var iitem = new Customer("","","",null);
+                var iitem = new Customer("erter","erert","jenabiReza@gmail.com",null);
                 //var customerCreated = message.Adapt<CustomerCreated>();
                 //var customer = CustomerCreated.Create(customerCreated);
-                _customerRepository.Add(iitem);
+                await _customerRepository.AddAsync(iitem);
 
             }
             catch (Exception e)

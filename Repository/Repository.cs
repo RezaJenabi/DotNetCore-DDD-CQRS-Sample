@@ -44,6 +44,7 @@ namespace Core.Repository
             Assert.NotNull(entity, nameof(entity));
 
             await Entities.AddAsync(entity).ConfigureAwait(false);
+            await _dbContext.SaveEntitiesAsync();
             await _dbContext.SaveChangesAsync().ConfigureAwait(false);
         }
 

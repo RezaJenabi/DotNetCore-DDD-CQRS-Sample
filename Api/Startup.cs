@@ -1,12 +1,15 @@
 ﻿using Api.Extensions;
 using Commands.Customers;
+using Domain.Models.CustomerAggregate.Events.DomainEvents;
 using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Reflection;
 
 namespace Api
 {
@@ -22,6 +25,7 @@ namespace Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddSqlContext(Configuration);
             services.AddCommandsQueries();
             services.AddRepositories();
